@@ -1,4 +1,4 @@
-# Projeto-de-Extens-o
+# Projeto de Extensão
 # 📦 Sistema de Gestão de Pedidos & PDV
 
 Este projeto é um sistema leve e eficiente para controle de produtos, estoque e realização de vendas (Ponto de Venda), desenvolvido em Python com interface web via Streamlit.
