@@ -1,0 +1,20 @@
+[theme]
+# A cor "Tiffany" pedida no documento. 
+# Será usada nos botões primários, sliders e foco de inputs.
+primaryColor = "#0ABAB5"
+
+# Cor de fundo da área principal (Branco para ar profissional de ERP)
+backgroundColor = "#FFFFFF"
+
+# Cor de fundo da barra lateral (Um cinza bem leve para destacar o menu)
+secondaryBackgroundColor = "#F0F2F6"
+
+# Cor do texto (Preto suave para leitura confortável)
+textColor = "#262730"
+
+# Fonte (Sans serif é mais moderna para sistemas web)
+font = "sans serif"
+
+[server]
+# Isso ajuda no desenvolvimento, recarregando o app ao salvar
+runOnSave = true

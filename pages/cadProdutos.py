@@ -1,26 +1,16 @@
 # pages/2_Cadastrar.py
 import streamlit as st
 from classes.produto import Produto
+from classes.categoria import Categoria
 from decimal import Decimal
+from components.menu import menu
 
 # Instancia o DAO
 dao_produto = Produto()
+dao_categoria = Categoria()
 
 # Menu
-# ===============================================================
-st.sidebar.title("Menu de Navegação")
-st.sidebar.markdown("Escolha uma opção abaixo para começar.")
-
-st.sidebar.divider()
-
-st.sidebar.page_link(page="app.py", label="Home")
-     
-st.sidebar.page_link(page="pages/cadProdutos.py", label="Cadastro de Produtos")
-
-st.sidebar.page_link(page="pages/produtosPage.py", label="Ver Produtos")
-
-st.sidebar.page_link(page="pages/pdv.py", label="Ponto de Venda")
-#======================================================================
+menu()
 
 st.title("Cadastrar Novo Produto")
 
@@ -29,16 +19,22 @@ with st.form(key="form_cadastro_produto", clear_on_submit=True):
     nome_input = st.text_input("Nome do Produto", placeholder="X-Exemplo")
     desc_input = st.text_input("Descrição do Produto", placeholder="Lanche X...")
     preco_input = st.number_input("Preço (R$)", min_value=0.01, step=0.01, format="%.2f")
-    cat_input = st.number_input("Código da Categoria", min_value=1)
     
+    list_cat = dao_categoria.listar_categorias() #Gera lista de categorias 
+
+    mapa_categorias = {c['nome']: c['id_categoria'] for c in list_cat}#Exibe a lista no select para o user
+
+    categoria_selecionada = st.selectbox("Categorias", options=list(mapa_categorias.keys())) # Select
+
     submit_button = st.form_submit_button(label="Salvar Produto")
 
 # A MESMA lógica de salvamento
 if submit_button:
+    id_categoria_final = mapa_categorias[categoria_selecionada]
     if nome_input and preco_input > 0:
         try:
             preco_decimal = Decimal(f"{preco_input:.2f}")
-            dao_produto.salvar(nome_input, desc_input, preco_decimal, cat_input)
+            dao_produto.salvar(nome_input, desc_input, preco_decimal, id_categoria_final)
             st.success(f"Produto '{nome_input}' salvo com sucesso!")
             
             # ATENÇÃO: Como a tabela está em OUTRA página,

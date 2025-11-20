@@ -11,7 +11,7 @@ from contextlib import contextmanager
 DB_HOST = os.getenv('DB_HOST', 'localhost')
 DB_NAME = os.getenv('DB_NAME', 'sgp_producao')
 DB_USER = os.getenv('DB_USER', 'root')
-#DB_PASS = os.getenv('DB_PASS', '1234')
+DB_PASS = os.getenv('DB_PASS', '9651luke')
 
 @contextmanager
 def get_conexao():
@@ -22,7 +22,7 @@ def get_conexao():
             host=DB_HOST,
             database=DB_NAME,
             user=DB_USER,
-            #password=DB_PASS
+            password=DB_PASS
         )
 
         yield conexao 
