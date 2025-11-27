@@ -7,6 +7,8 @@ def menu():
     st.sidebar.divider()
 
     st.sidebar.page_link(page="app.py", label="Home")
+
+    st.sidebar.page_link(page="pages/pdv.py", label="Ponto de Venda")
         
     st.sidebar.page_link(page="pages/cadProdutos.py", label="Cadastro de Produtos")
 
