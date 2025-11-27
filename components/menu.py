@@ -13,3 +13,5 @@ def menu():
     st.sidebar.page_link(page="pages/cadProdutos.py", label="Cadastro de Produtos")
 
     st.sidebar.page_link(page="pages/produtosPage.py", label="Ver Produtos")
+
+    st.sidebar.page_link(page="pages/gestaoPedidos.py", label="Gestão de pedidos")

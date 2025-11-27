@@ -55,3 +55,30 @@ CREATE TABLE item_pedido (
     preco_unitario DECIMAL(10, 2) NOT NULL, 
     FOREIGN KEY (id_pedido) REFERENCES pedido(id_pedido),
     FOREIGN KEY (id_produto) REFERENCES produto(id_produto);
+
+-- Tabela de Usuario
+CREATE TABLE IF NOT EXISTS usuario (
+    id_usuario 			INT AUTO_INCREMENT PRIMARY KEY,
+    nome_usuario		VARCHAR(100) NOT NULL,
+    email_usuario		VARCHAR(100) NOT NULL UNIQUE,
+    senha_usuario 		VARCHAR(255) NOT NULL 
+);
+
+-- Tabela de registro da Venda
+CREATE TABLE IF NOT EXISTS venda (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    data_venda DATETIME DEFAULT CURRENT_TIMESTAMP,
+    total DECIMAL(10, 2),
+    resumo_itens TEXT -- Aqui vai ficar o texto ex: "2x X-Salada, 1x Coca"
+);
+
+-- Tabela de Movimentações de Estoque
+CREATE TABLE IF NOT EXISTS movimentacao_estoque (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_produto INT NOT NULL,
+    tipo VARCHAR(10) NOT NULL, -- Vai ser 'Entrada' ou 'Saida'
+    quantidade INT NOT NULL,
+    data_movimentacao DATETIME DEFAULT CURRENT_TIMESTAMP,
+    observacao VARCHAR(255), -- Ex: "Venda #123" ou "Compra Nota #55"
+    FOREIGN KEY (id_produto) REFERENCES produto(id_produto)
+);

@@ -13,7 +13,7 @@ if 'usuario_logado' not in st.session_state:
 
 # --- FUNÇÃO DA TELA DE LOGIN ---
 def mostrar_login():
-    st.title("Bem-vindo! 👋")
+    st.title("Bem-vindo!")
     
     # Criamos abas para Login e Cadastro (pra facilitar seu teste)
     tab1, tab2 = st.tabs(["Entrar", "Criar Conta"])

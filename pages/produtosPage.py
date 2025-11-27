@@ -54,7 +54,7 @@ def abrir_modal_edicao(produto_edit):
 # ====================================================
 # 🟦 HEADER ESTÁTICO (Fica fixo no topo)
 # ====================================================
-st.title("Produtos Cadastrados 📦")
+st.title("Produtos Cadastrados")
 
 # Carrega dados
 lista_produtos = carregar_dados()
@@ -63,7 +63,7 @@ lista_produtos = carregar_dados()
 col_search, col_btn = st.columns([4, 1])
 
 with col_search:
-    termo_pesquisa = st.text_input("Buscar Produto", placeholder="🔍 Digite o nome...", label_visibility="collapsed")
+    termo_pesquisa = st.text_input("Buscar Produto", placeholder=" Digite o nome...", label_visibility="collapsed")
 
 with col_btn:
     if st.button("🔄 Atualizar Lista", use_container_width=True):
